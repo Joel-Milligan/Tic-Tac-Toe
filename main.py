@@ -22,7 +22,7 @@ while running:
         print(event)
 
     game_display.fill(background_colour)
-
+    drawing.draw_grid(game_display)
     pygame.display.update()
     clock.tick(60)
 
