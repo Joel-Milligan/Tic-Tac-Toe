@@ -1,5 +1,6 @@
 import pygame
 import colours
+import drawing
 
 # Initialisation of PyGame
 pygame.init()
