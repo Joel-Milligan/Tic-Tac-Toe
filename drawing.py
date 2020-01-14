@@ -36,5 +36,11 @@ def draw_cross(surface, col, row):
             (indent + (col * (dimensions[0] / 3)), ((row + 1) * (dimensions[1] / 3)) - indent), \
             thickness)
 
+# Currently only works for square window sizes
 def draw_nought(surface, col, row):
-    pass
+    dimensions = surface.get_size()
+
+    pygame.draw.circle(surface, colours.blue, \
+        (int((col * dimensions[0] / 3) + dimensions[0] / 6), \
+        int((row * dimensions[1] / 3) + dimensions[1] / 6)), \
+        int((dimensions[0] / 6) - indent), int(thickness))
