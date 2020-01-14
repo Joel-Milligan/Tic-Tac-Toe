@@ -21,8 +21,7 @@ def draw_grid(surface):
             (dimensions[0] - indent, y * (dimensions[1] / 3)), \
             thickness)
 
-def draw_cross(surface, x, y):
-    pass
+def draw_cross(surface, col, row):
 
-def draw_nought(surface, x, y):
+def draw_nought(surface, col, row):
     pass
