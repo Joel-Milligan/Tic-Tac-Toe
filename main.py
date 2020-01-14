@@ -8,7 +8,7 @@ clock = pygame.time.Clock()
 running = True
 
 # Game screen
-screen_size = (800, 600) 
+screen_size = (600, 600) 
 game_display = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("Tic Tac Toe")
 background_colour = colours.white
@@ -25,7 +25,6 @@ while running:
     drawing.draw_grid(game_display)
     pygame.display.update()
     clock.tick(60)
-
 
 pygame.quit()
 quit()
