@@ -1,4 +1,5 @@
 import pygame
+import colours
 
 # Initialisation of PyGame
 pygame.init()
@@ -9,6 +10,7 @@ running = True
 screen_size = (800, 600) 
 game_display = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("Tic Tac Toe")
+background_colour = colours.white
 
 # Main Game Loop
 while running:
@@ -17,6 +19,8 @@ while running:
             running = False
     
         print(event)
+
+    game_display.fill(background_colour)
 
     pygame.display.update()
     clock.tick(60)
