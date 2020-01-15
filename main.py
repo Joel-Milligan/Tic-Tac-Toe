@@ -10,6 +10,9 @@ running = True
 current_turn = 1
 current_board = [ [0, 0, 0], [0, 0, 0], [0, 0, 0] ]
 
+# Win Message
+game_font = pygame.font.Font(pygame.font.get_default_font(), 100)
+
 # Game screen
 screen_size = (600, 600) 
 game_display = pygame.display.set_mode(screen_size)
@@ -19,23 +22,69 @@ background_colour = colours.white
 def check_win(board_state):
     for i in range(3):
         if (current_board[i][0] == 1 or current_board[i][0] == 2) and (current_board[i][0] == current_board[i][1] == current_board[i][2]):
-            time.sleep(1)
-            pygame.quit()
-            quit()
+            game_win()
         elif (current_board[0][i] == 1 or current_board[0][i] == 2) and (current_board[0][i] == current_board[1][i] == current_board[2][i]):
-            time.sleep(1)
-            pygame.quit()
-            quit()
+            game_win()
     
     if(current_board[1][1] == 1 or current_board[1][1] == 2):
         if current_board[0][0] == current_board[1][1] == current_board[2][2]:
-            time.sleep(1)
-            pygame.quit()
-            quit()
+            game_win()
         elif current_board[0][2] == current_board[1][1] == current_board[2][0]:
-            time.sleep(1)
-            pygame.quit()
-            quit()
+            game_win()
+
+    number_of_empty = 0
+    for i in range(3):
+        for j in range(3):
+            if(current_board[i][j] == 0):
+                number_of_empty += 1
+
+    if number_of_empty == 0:
+        game_draw()
+
+def game_win():
+    if current_turn == 2:
+        for i in range(3):
+            game_display.fill(background_colour)
+            text1 = game_font.render("x has won!", True, colours.green, colours.white)
+            game_display.blit(text1, \
+                ((game_display.get_size()[0] / 2) - (text1.get_size()[0] / 2), \
+                (game_display.get_size()[1] / 2) - (text1.get_size()[1] / 2)) )
+            
+            pygame.display.update()
+            pygame.time.delay(1000)
+
+            game_display.fill(background_colour)
+            text1 = game_font.render("x has won!", True, colours.red, colours.white)
+            game_display.blit(text1, \
+                ((game_display.get_size()[0] / 2) - (text1.get_size()[0] / 2), \
+                (game_display.get_size()[1] / 2) - (text1.get_size()[1] / 2)) )
+            
+            pygame.display.update()
+            pygame.time.delay(1000)
+    else:
+        text1 = game_font.render("o has won!", True, colours.green, colours.white)
+        text2 = game_font.render("o has won!", True, colours.red, colours.white)
+
+        for i in range(3):
+            game_display.fill(background_colour)
+            game_display.blit(text1, \
+                ((game_display.get_size()[0] / 2) - (text1.get_size()[0] / 2), \
+                (game_display.get_size()[1] / 2) - (text1.get_size()[1] / 2)) )
+            
+            pygame.display.update()
+            pygame.time.delay(1000)
+
+            game_display.fill(background_colour)
+           
+            game_display.blit(text2, \
+                ((game_display.get_size()[0] / 2) - (text1.get_size()[0] / 2), \
+                (game_display.get_size()[1] / 2) - (text1.get_size()[1] / 2)) )
+            
+            pygame.display.update()
+            pygame.time.delay(1000)
+
+    pygame.quit()
+    quit()
 
 # Left Mouse Click Function
 def left_mouse_clicked(mouse_pos, turn):
