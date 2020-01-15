@@ -15,6 +15,49 @@ game_display = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("Tic Tac Toe")
 background_colour = colours.white
 
+# Left Mouse Click Function
+def left_mouse_clicked(mouse_pos, turn):
+    # Left column
+    if mouse_pos[0] < (screen_size[0] / 3):
+        # Top Left
+        if mouse_pos[1] < (screen_size[1] / 3):
+            current_board[0][0] = turn
+        # Middle Left
+        elif mouse_pos[1] < 2 * (screen_size[1] / 3):
+            current_board[0][1] = turn
+        # Bottom Left
+        elif mouse_pos[1] < screen_size[1]:
+            current_board[0][2] = turn
+    
+    # Centre column
+    elif mouse_pos[0] < 2 * (screen_size[0] / 3):
+        # Top Centre
+        if mouse_pos[1] < (screen_size[1] / 3):
+            current_board[1][0] = turn
+        # Middle Centre
+        elif mouse_pos[1] < 2 * (screen_size[1] / 3):
+            current_board[1][1] = turn
+        # Bottom Centre
+        elif mouse_pos[1] < screen_size[1]:
+            current_board[1][2] = turn
+    
+    # Right column
+    elif mouse_pos[0] < screen_size[0]:
+        # Top Right
+        if mouse_pos[1] < (screen_size[1] / 3):
+            current_board[2][0] = turn
+        # Middle Right
+        elif mouse_pos[1] < 2 * (screen_size[1] / 3):
+            current_board[2][1] = turn
+        # Bottom Right
+        elif mouse_pos[1] < screen_size[1]:
+            current_board[2][2] = turn
+
+    if turn == 1:
+        return 2
+    else:
+        return 1       
+
 # Main Game Loop
 while running:
     for event in pygame.event.get():
