@@ -4,7 +4,7 @@ import colours
 indent = 20
 thickness = 5
 
-def draw_grid(surface):
+def draw_grid(surface, board_state):
     dimensions = surface.get_size()
 
     # Draw vertical lines
@@ -20,6 +20,14 @@ def draw_grid(surface):
             (indent, y * (dimensions[1] / 3)), \
             (dimensions[0] - indent, y * (dimensions[1] / 3)), \
             thickness)
+
+    # Draw noughts and crosses
+    for i in range(3):
+        for j in range(3):
+            if board_state[i][j] == 1:
+                draw_cross(surface, i, j)
+            elif board_state[i][j] == 2:
+                draw_nought(surface, i, j)
 
 def draw_cross(surface, col, row):
     dimensions = surface.get_size()

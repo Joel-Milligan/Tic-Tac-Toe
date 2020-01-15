@@ -70,7 +70,7 @@ while running:
 
 
     game_display.fill(background_colour)
-    drawing.draw_grid(game_display)
+    drawing.draw_grid(game_display, current_board)
     pygame.display.update()
     clock.tick(60)
 
