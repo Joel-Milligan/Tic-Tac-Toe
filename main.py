@@ -68,6 +68,7 @@ while running:
             if event.button == 1:
                 current_turn = left_mouse_clicked(event.pos, current_turn)
 
+        # print(event)
 
     game_display.fill(background_colour)
     drawing.draw_grid(game_display, current_board)
