@@ -1,6 +1,7 @@
 import pygame
 import colours
 import drawing
+import time
 
 # Initialisation of the game
 pygame.init()
@@ -14,6 +15,27 @@ screen_size = (600, 600)
 game_display = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("Tic Tac Toe")
 background_colour = colours.white
+
+def check_win(board_state):
+    for i in range(3):
+        if (current_board[i][0] == 1 or current_board[i][0] == 2) and (current_board[i][0] == current_board[i][1] == current_board[i][2]):
+            time.sleep(1)
+            pygame.quit()
+            quit()
+        elif (current_board[0][i] == 1 or current_board[0][i] == 2) and (current_board[0][i] == current_board[1][i] == current_board[2][i]):
+            time.sleep(1)
+            pygame.quit()
+            quit()
+    
+    if(current_board[1][1] == 1 or current_board[1][1] == 2):
+        if current_board[0][0] == current_board[1][1] == current_board[2][2]:
+            time.sleep(1)
+            pygame.quit()
+            quit()
+        elif current_board[0][2] == current_board[1][1] == current_board[2][0]:
+            time.sleep(1)
+            pygame.quit()
+            quit()
 
 # Left Mouse Click Function
 def left_mouse_clicked(mouse_pos, turn):
@@ -73,6 +95,7 @@ while running:
     game_display.fill(background_colour)
     drawing.draw_grid(game_display, current_board)
     pygame.display.update()
+    check_win(current_board)
     clock.tick(60)
 
 pygame.quit()
