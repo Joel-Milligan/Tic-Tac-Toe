@@ -2,10 +2,12 @@ import pygame
 import colours
 import drawing
 
-# Initialisation of PyGame
+# Initialisation of the game
 pygame.init()
 clock = pygame.time.Clock()
 running = True
+current_turn = 1
+current_board = [ [0, 0, 0], [0, 0, 0], [0, 0, 0] ]
 
 # Game screen
 screen_size = (600, 600) 
