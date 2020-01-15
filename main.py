@@ -10,8 +10,9 @@ running = True
 current_turn = 1
 current_board = [ [0, 0, 0], [0, 0, 0], [0, 0, 0] ]
 
-# Win Message
-game_font = pygame.font.Font(pygame.font.get_default_font(), 100)
+# Fonts
+win_font = pygame.font.Font(pygame.font.get_default_font(), 100)
+draw_font = pygame.font.Font(pygame.font.get_default_font(), 50)
 
 # Game screen
 screen_size = (600, 600) 
@@ -43,9 +44,11 @@ def check_win(board_state):
 
 def game_win():
     if current_turn == 2:
+        text1 = win_font.render("x has won!", True, colours.green, colours.white)
+        text2 = win_font.render("x has won!", True, colours.red, colours.white)
+        
         for i in range(3):
             game_display.fill(background_colour)
-            text1 = game_font.render("x has won!", True, colours.green, colours.white)
             game_display.blit(text1, \
                 ((game_display.get_size()[0] / 2) - (text1.get_size()[0] / 2), \
                 (game_display.get_size()[1] / 2) - (text1.get_size()[1] / 2)) )
@@ -54,7 +57,6 @@ def game_win():
             pygame.time.delay(1000)
 
             game_display.fill(background_colour)
-            text1 = game_font.render("x has won!", True, colours.red, colours.white)
             game_display.blit(text1, \
                 ((game_display.get_size()[0] / 2) - (text1.get_size()[0] / 2), \
                 (game_display.get_size()[1] / 2) - (text1.get_size()[1] / 2)) )
@@ -62,8 +64,8 @@ def game_win():
             pygame.display.update()
             pygame.time.delay(1000)
     else:
-        text1 = game_font.render("o has won!", True, colours.green, colours.white)
-        text2 = game_font.render("o has won!", True, colours.red, colours.white)
+        text1 = win_font.render("o has won!", True, colours.green, colours.white)
+        text2 = win_font.render("o has won!", True, colours.red, colours.white)
 
         for i in range(3):
             game_display.fill(background_colour)
@@ -83,6 +85,18 @@ def game_win():
             pygame.display.update()
             pygame.time.delay(1000)
 
+    pygame.quit()
+    quit()
+
+def game_draw():
+    game_display.fill(background_colour)
+    text = draw_font.render("The game is drawn!", True, colours.black, colours.white)
+    game_display.blit(text, \
+        ((game_display.get_size()[0] / 2) - (text.get_size()[0] / 2), \
+        (game_display.get_size()[1] / 2) - (text.get_size()[1] / 2)) )
+            
+    pygame.display.update()
+    pygame.time.delay(1000)
     pygame.quit()
     quit()
 
