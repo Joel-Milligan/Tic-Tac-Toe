@@ -2,6 +2,7 @@ import pygame
 import colours
 
 indent = 20
+window_border = 30
 thickness = 12
 
 def draw_grid(surface, board_state):
